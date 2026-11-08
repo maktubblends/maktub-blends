@@ -1,0 +1,24 @@
+name: Inventario local Merchant Center
+on:
+  schedule:
+    - cron: "17 2 * * *" # 23:17 hora Argentina, antes de que Merchant Center lea el archivo a las 0:00
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/inventario-local.mjs
+      - name: Guardar cambios
+        run: |
+          if git diff --quiet merchant/inventario-local.tsv; then echo "Sin cambios"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add merchant/inventario-local.tsv
+          git commit -m "Inventario local: actualización automática"
+          git push
