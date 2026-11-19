@@ -122,7 +122,7 @@ function mkSearchRecovery(){
     var title=document.createElement("h4");title.textContent="¿Quisiste buscar alguno de estos productos?";result.appendChild(title);
     var links=document.createElement("div");links.className="mk-audit-links";
     matches.slice(0,3).forEach(function(match){var a=document.createElement("a");a.href="/productos/"+match.slug+"/";a.textContent=match.name;links.appendChild(a)});
-    result.appendChild(links);box.appendChild(result);
+    result.appendChild(links);box.insertBefore(result,box.querySelector(".mk-audit-links"));
   });
 }
 function mkSearchKeyboard(){
