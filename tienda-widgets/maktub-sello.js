@@ -103,3 +103,43 @@ function msg(u){if(u>=20)return["¡Ya tenés el <strong>10% OFF</strong>, el má
 function run(){var root=document.getElementById("modal-cart");if(!root)return;var items=[].slice.call(root.querySelectorAll(".js-cart-item"));var u=0;items.forEach(function(it){var n=it.querySelector(".cart-item-name");var q=it.querySelector(".js-cart-quantity-input");if(n&&EL.test(n.textContent))u+=parseInt(q&&q.value||"1",10)||0});var box=root.querySelector(".mk-esc");if(!items.length){box&&box.remove();return}var m=msg(u);var anchor=root.querySelector(".js-ship-free-rest");if(!anchor)return;if(!box){box=document.createElement("div");box.className="mk-esc";anchor.parentNode.insertBefore(box,anchor)}if(box.innerHTML!==m[0])box.innerHTML=m[0];box.classList.toggle("mk-esc-max",!!m[1])}
 var t,t2;function sch(){clearTimeout(t);clearTimeout(t2);t=setTimeout(run,300);t2=setTimeout(run,1800)}function init(){var root=document.getElementById("modal-cart");if(!root)return;run();new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var x=ms[i].target;if(x.nodeType===1&&x.closest&&x.closest(".mk-esc"))continue;sch();return}}).observe(root,{childList:true,subtree:true,attributes:true,attributeFilter:["value"]});root.addEventListener("input",sch);root.addEventListener("click",sch)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init()})()
 }catch(e){window.console&&console.warn("mk-sello",e)}
+
+;(function(){
+  function init(){
+    var style=document.createElement("style");
+    style.textContent="@media(min-width:992px){body.template-category .category-banner{max-width:1120px;margin-inline:auto!important}} .mk-kit-choice{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:12px 0}.mk-kit-choice a{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid #cfe0f1;border-radius:12px;color:#004899;background:#fff;text-decoration:none}.mk-kit-choice a:hover,.mk-kit-choice a:focus-visible{border-color:#004899}.mk-kit-choice strong{font-size:16px}.mk-kit-choice .mk-kit-cta{font-weight:650;text-decoration:underline}.mk-kit-choice .mk-kit-price{font-weight:700}.mk-kit-choice a:focus-visible,.mk-fold-btn:focus-visible{outline:2px solid #004899;outline-offset:3px}";
+    document.head.appendChild(style);
+    if(location.pathname!=="/kit-emprendedor/")return;
+    var section=document.getElementById("mk-kit-paths");
+    if(!section)return;
+    var kits=[];
+    document.querySelectorAll(".js-item-product").forEach(function(card){
+      var title=card.querySelector(".js-item-name"),price=card.querySelector(".js-price-display"),link=card.querySelector('a[href*="/productos/kit-"]');
+      if(!title||!price||!link)return;
+      var type=title.textContent.match(/KIT\s+(INICIAL|INTERMEDIO|AVANZADO)/i);
+      var quantity=card.textContent.match(/(\d+)\s+productos/i);
+      if(!type||!quantity)return;
+      kits.push({name:type[1],quantity:Number(quantity[1]),price:price.textContent.trim(),href:link.href});
+    });
+    kits.sort(function(a,b){return a.quantity-b.quantity});
+    if(!kits.length)return;
+    var heading=document.createElement("h3");heading.id="mk-kits-start";heading.textContent="Elegí tu kit para emprender";
+    var choices=document.createElement("div");choices.className="mk-kit-choice";
+    kits.forEach(function(kit){
+      var link=document.createElement("a");link.href=kit.href;
+      var title=document.createElement("strong");title.textContent="Kit "+kit.name.toLowerCase();
+      var units=document.createElement("span");units.textContent=kit.quantity+" productos";
+      var price=document.createElement("span");price.className="mk-kit-price";price.textContent=kit.price;
+      var cta=document.createElement("span");cta.className="mk-kit-cta";cta.textContent="Ver kit →";
+      link.append(title,units,price,cta);choices.appendChild(link);
+    });
+    var compare=section.querySelector("#mk-compare-bundles");
+    section.insertBefore(heading,compare);section.insertBefore(choices,compare);
+    var wholesale=section.querySelector('a[href="/venta-mayorista/"]');
+    if(wholesale){
+      var direct=wholesale.cloneNode(true);direct.href="#mk-kits-start";direct.textContent="Comprar un kit para revender";
+      wholesale.textContent="Consultar venta mayorista";wholesale.before(direct);
+    }
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
+})();
