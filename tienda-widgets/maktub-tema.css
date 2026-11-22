@@ -105,3 +105,10 @@ html body footer .claim-link a{display:inline-flex;align-items:center;min-height
 .mk-cat-seo h3{font-size:17px!important;font-weight:700!important;color:#000!important;margin:22px 0 6px!important}
 .mk-cat-seo p{margin:0 0 12px}
 .mk-cat-seo a{color:#004899;text-decoration:underline}
+/* --- mk-header-movil (22/11): encabezado más compacto al entrar en celular --- */
+@media(max-width:767px){
+html body:not(.mk-hs) .js-head-main .logo-img-container-big .logo-img-big{height:54px!important;max-height:54px!important;width:auto!important;margin:7px 0!important}
+html body .js-head-main .js-search-input{height:42px!important}
+html body:not(.mk-hs) .js-head-main .order-last.order-md-0{padding-bottom:4px!important}
+html body .js-head-main>.container-fluid.pb-3{padding-bottom:8px!important}
+}
