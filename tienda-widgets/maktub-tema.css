@@ -75,12 +75,12 @@ html body .mk-nums .mk-num-n{text-align:center!important}
 /* --- mk-sbuy (22/11): barra fija de compra en celular --- */
 #mk-sbuy{display:none}
 @media(max-width:767px){
-#mk-sbuy{display:flex;align-items:center;gap:12px;position:fixed;left:0;right:0;z-index:9989;padding:10px 14px;background:#fff;border-top:1px solid #e3e8ef;box-shadow:0 -6px 18px rgba(0,40,83,.08);transform:translateY(130%);transition:transform .25s ease;box-sizing:border-box}
+#mk-sbuy{display:flex;align-items:center;gap:12px;position:fixed;left:0;right:0;z-index:9989;padding:6px 14px max(16px,calc(6px + env(safe-area-inset-bottom,0px)));background:#fff;border-top:1px solid #e3e8ef;box-shadow:0 -6px 18px rgba(0,40,83,.08);transform:translateY(130%);transition:transform .25s ease;box-sizing:border-box}
 #mk-sbuy.mk-sbuy-show{transform:none}
 #mk-sbuy .mk-sbuy-info{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
 #mk-sbuy .mk-sbuy-name{font-size:13px;font-weight:700;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#mk-sbuy .mk-sbuy-price{font-size:17px;font-weight:800;color:#004899}
-#mk-sbuy .mk-sbuy-btn{flex:0 0 auto;min-height:46px;padding:0 20px;border:0;border-radius:999px;background:#004899;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+#mk-sbuy .mk-sbuy-price{font-size:16px;font-weight:800;color:#004899}
+#mk-sbuy .mk-sbuy-btn{flex:0 0 auto;min-height:42px;padding:0 20px;border:0;border-radius:999px;background:#004899;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
 #mk-sbuy .mk-sbuy-btn:active{transform:scale(.96)}
 #mk-sbuy.mk-sbuy-off .mk-sbuy-btn{background:#9aa7b6}
 body.mk-sbuy-on{padding-bottom:72px}
