@@ -99,8 +99,6 @@ html body footer .claim-link a{display:inline-flex;align-items:center;min-height
 #mk-gift-home p{margin:0;font-size:15px;line-height:1.45;color:#e7f0fb}
 #mk-gift-home .mk-gift-btn{flex:0 0 auto;display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;background:#fc0;color:#111!important;font-weight:800;text-decoration:none!important}
 @media(max-width:767px){#mk-gift-home .mk-gift-box{flex-wrap:wrap;padding:20px}#mk-gift-home .mk-gift-btn{width:100%;justify-content:center}}
-/* --- mk-endulzantes-oculta (22/11): la stevia pasa a Toppings para mate --- */
-.mk-cat a[href*="/endulzantes/"],.mk-cat [href*="/endulzantes/"]{display:none!important}
 /* --- mk-cat-seo (22/11): texto de categoría debajo de los productos --- */
 .mk-cat-seo{max-width:900px;margin:40px auto 10px;padding:0 16px;color:#222;font-size:15px;line-height:1.65}
 .mk-cat-seo h2{font-size:22px!important;font-weight:800!important;color:#000!important;margin:0 0 12px!important}
