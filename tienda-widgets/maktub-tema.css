@@ -67,3 +67,6 @@ html body.template-home [data-store="banner-services"] .service-item .row{column
 html body [data-store="banner-services"] .service-item h3.js-informative-banner-title{margin-bottom:6px!important;line-height:1.3!important;letter-spacing:.2px}
 html body [data-store="banner-services"] .service-item p[class*="js-informative-banner-description"]{line-height:1.5!important}
 }
+/* --- mk-paginas-ajustes (22/11): tabla del Club a lo ancho y cifras de Nosotros en negrita --- */
+html body .mk-table-wrap table{width:100%!important;max-width:680px}
+html body .mk-nums .mk-num-n{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;font-weight:800!important;letter-spacing:.3px}
