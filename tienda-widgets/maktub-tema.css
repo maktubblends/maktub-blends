@@ -70,3 +70,5 @@ html body [data-store="banner-services"] .service-item p[class*="js-informative-
 /* --- mk-paginas-ajustes (22/11): tabla del Club a lo ancho y cifras de Nosotros en negrita --- */
 html body .mk-table-wrap table{width:100%!important;max-width:680px}
 html body .mk-nums .mk-num-n{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;font-weight:800!important;letter-spacing:.3px}
+html body .mk-nums .mk-num{background:#0a56a8!important}
+html body .mk-nums .mk-num-n{text-align:center!important}
